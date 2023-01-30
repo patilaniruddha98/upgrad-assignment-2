@@ -5,6 +5,11 @@ terraform {
       version = "~> 4.0"
     }
   }
+  backend "s3" {
+    bucket = "upgrad-assignment-2-my-bucket"
+    key    = "path/key"
+    region = "us-east-1"
+  }
 }
 
 # Configure the AWS Provider

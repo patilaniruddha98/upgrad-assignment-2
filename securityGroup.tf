@@ -29,20 +29,15 @@ module "private_instance_sg" {
   vpc_id      = module.vpc.vpc_id
 
  
-   computed_ingress_with_source_security_group_id = [
+    ingress_with_cidr_blocks = [
     {
-      rule                     = "private_instance_sg"
-      source_security_group_id = module.bastion_sg.security_group_id
-    },
-    {
-      from_port   = 22
-      to_port     = 22
+      from_port   = 0
+      to_port     = 65535
       protocol    = "tcp"
       description = "ssh"
-      source_security_group_id = module.bastion_sg.security_group_id
-    },
+      cidr_blocks =  module.vpc.vpc_cidr_block
+    }
   ]
-   number_of_computed_ingress_with_source_security_group_id = 1
    
    egress_rules = ["all-all"]
   tags = {

@@ -42,6 +42,7 @@ module "private_instance_sg" {
       source_security_group_id = module.bastion_sg.security_group_id
     },
   ]
+   number_of_computed_ingress_with_source_security_group_id = 1
    
    egress_rules = ["all-all"]
   tags = {
